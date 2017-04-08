@@ -7,10 +7,12 @@ class Shape : public QGraphicsItem
 public:
     Shape();
 
-    QRectF boundingRect() const override;
+    virtual QRectF boundingRect() const override = 0;
     virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override = 0;
 
 protected:
+    int pixmap_w, pixmap_h;
+
     void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;

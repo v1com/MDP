@@ -1,15 +1,17 @@
-#ifndef Block_H
-#define Block_H
+#ifndef IFBLOCK_H
+#define IFBLOCK_H
+
 #include "shape.h"
 
-class Block : public Shape
+class IfBlock : public Shape
 {
 public:
-    Block(int x, int y, int w, int h);
+    IfBlock(int x, int y);
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
 private:
-    int x, y, h, w;
+    //Left point of romb
+    int x, y;
 };
 
-#endif // Block_H
+#endif // IFBLOCK_H

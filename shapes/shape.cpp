@@ -6,10 +6,10 @@ Shape::Shape()
 
 }
 
-QRectF Shape::boundingRect() const
-{
-    return QRectF(-15.5, -15.5, 34, 34);
-}
+//QRectF Shape::boundingRect() const
+//{
+//    return QRectF(-15.5, -15.5, 34, 34);
+//}
 
 //void Shape::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 //{
@@ -24,6 +24,12 @@ QRectF Shape::boundingRect() const
 //    painter->drawText(-15,-15,100,50,0,"testtest\ntesttesttest");*/
 
 //  /*If block (romb)
+//        QPointF points[4] = {
+//                    QPointF(-15,-15),
+//                    QPointF(35, 15),
+//                    QPointF(85,-15),
+//                    QPointF(35, -45),
+//                };
 //    painter->drawPolygon(points, 4);*/
 
 //  /*Exit
@@ -60,7 +66,7 @@ void Shape::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     mime->setColorData(QRectF(-15.5, -15.5, 34, 34));
     mime->setText("Data");
 
-    QPixmap pixmap(30, 30);
+    QPixmap pixmap(pixmap_w, pixmap_h);
     pixmap.fill(Qt::white);
 
     QPainter painter(&pixmap);
