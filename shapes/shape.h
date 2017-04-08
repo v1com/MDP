@@ -8,7 +8,7 @@ public:
     Shape();
 
     QRectF boundingRect() const override;
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
+    virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override = 0;
 
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event) override;

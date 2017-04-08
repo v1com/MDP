@@ -1,13 +1,15 @@
-#include "rectangle.h"
+#include "block.h"
+#include <QWidget>
+#include <QPainter>
 
-Rectangle::Rectangle()
+Block::Block()
 {
     setToolTip("Simple block");
     setCursor(Qt::OpenHandCursor);
     setAcceptedMouseButtons(Qt::LeftButton);
 }
 
-void Rectangle::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void Block::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     Q_UNUSED(option);
     Q_UNUSED(widget);

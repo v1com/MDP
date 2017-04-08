@@ -25,10 +25,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
     shapes/shape.cpp \
-    shapes/rectangle.cpp
+    shapes/block.cpp
 
 HEADERS  += \
     shapes/shape.h \
-    shapes/rectangle.h
+    shapes/block.h
 
 FORMS    +=
