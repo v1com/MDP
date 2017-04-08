@@ -25,7 +25,14 @@ void Shape::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
     painter->drawRect(-15,-15,100,50);
     painter->drawText(-15,-15,100,50,0,"testtest\ntesttesttest");*/
 
-  /*If block (romb)
+  //If block (romb)
+  /*  QPointF points[4] = {
+            QPointF(-15,-15),
+            QPointF(35, 15),
+            QPointF(85,-15),
+            QPointF(35, -45),
+        };
+
     painter->drawPolygon(points, 4);*/
 
   /*Exit
