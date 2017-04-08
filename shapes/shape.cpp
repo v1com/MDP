@@ -3,9 +3,7 @@
 
 Shape::Shape()
 {
-    setToolTip("This is shape");
-    setCursor(Qt::OpenHandCursor);
-    setAcceptedMouseButtons(Qt::LeftButton);
+
 }
 
 QRectF Shape::boundingRect() const
@@ -13,42 +11,35 @@ QRectF Shape::boundingRect() const
     return QRectF(-15.5, -15.5, 34, 34);
 }
 
-void Shape::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
-{
-    Q_UNUSED(option);
-    Q_UNUSED(widget);
-    painter->setPen(Qt::NoPen);
-    painter->setPen(QPen(Qt::black, 1));
-    painter->setBrush(* new QBrush(Qt::gray));
+//void Shape::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+//{
+//    Q_UNUSED(option);
+//    Q_UNUSED(widget);
+//    painter->setPen(Qt::NoPen);
+//    painter->setPen(QPen(Qt::black, 1));
+//    painter->setBrush(* new QBrush(Qt::gray));
 
-  /*Simple block
-    painter->drawRect(-15,-15,100,50);
-    painter->drawText(-15,-15,100,50,0,"testtest\ntesttesttest");*/
+//  /*Simple block
+//    painter->drawRect(-15,-15,100,50);
+//    painter->drawText(-15,-15,100,50,0,"testtest\ntesttesttest");*/
 
-  //If block (romb)
-  /*  QPointF points[4] = {
-            QPointF(-15,-15),
-            QPointF(35, 15),
-            QPointF(85,-15),
-            QPointF(35, -45),
-        };
+//  /*If block (romb)
+//    painter->drawPolygon(points, 4);*/
 
-    painter->drawPolygon(points, 4);*/
+//  /*Exit
+//    painter->drawEllipse(-15,-15,50,50);
+//    painter->setBrush(* new QBrush(Qt::black));
+//    painter->drawEllipse(-5,-5,30,30);*/
 
-  /*Exit
-    painter->drawEllipse(-15,-15,50,50);
-    painter->setBrush(* new QBrush(Qt::black));
-    painter->drawEllipse(-5,-5,30,30);*/
+//  /*Entrance
+//    painter->setBrush(* new QBrush(Qt::black));
+//    painter->drawEllipse(-15,-15,50,50);*/
 
-  /*Entrance
-    painter->setBrush(* new QBrush(Qt::black));
-    painter->drawEllipse(-15,-15,50,50);*/
+//  /*ParallelBlocks
+//    painter->setBrush(* new QBrush(Qt::black));
+//    painter->drawRect(-55,-55,150,5);*/
 
-  /*ParallelBlocks
-    painter->setBrush(* new QBrush(Qt::black));
-    painter->drawRect(-55,-55,150,5);*/
-
-}
+//}
 
 void Shape::mousePressEvent(QGraphicsSceneMouseEvent *)
 {
