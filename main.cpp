@@ -2,6 +2,7 @@
 #include <QApplication>
 #include <shape.h>
 #include <QtWidgets>
+#include <QSplitter>
 
 class GraphicsView : public QGraphicsView
 {
@@ -18,17 +19,10 @@ protected:
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
-    QGraphicsScene scene(-200, -200, 400, 400);
 
-    Shape *item = new Shape();
-    scene.addItem(item);
+    MainWindow window;
+    window.show();
 
-    GraphicsView view(&scene);
-    view.setRenderHint(QPainter::Antialiasing);
-    view.setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
-    view.setBackgroundBrush(QColor(255, 255, 255));
-    view.setWindowTitle("MDP");
-    view.show();
 
     return app.exec();
 }

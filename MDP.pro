@@ -25,7 +25,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    shape.cpp
+    shape.cpp \
+    KEK/kek.cpp
 
 HEADERS  += mainwindow.h \
     shape.h
