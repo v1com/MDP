@@ -1,6 +1,7 @@
 #include <QApplication>
 #include <QtWidgets>
 #include "shapes/block.h"
+#include "shapes/ifblock.h"
 
 class GraphicsView : public QGraphicsView
 {
@@ -19,7 +20,7 @@ int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
     QGraphicsScene scene(-200, -200, 400, 400);
 
-    Block *item = new Block();
+    IfBlock *item = new IfBlock(-15,-15);
     scene.addItem(item);
 
     GraphicsView view(&scene);
