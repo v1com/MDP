@@ -24,10 +24,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
-    shape.cpp
+    shapes/shape.cpp \
+    shapes/rectangle.cpp
 
-HEADERS  += mainwindow.h \
-    shape.h
+HEADERS  += \
+    shapes/shape.h \
+    shapes/rectangle.h
 
-FORMS    += mainwindow.ui
+FORMS    +=

@@ -1,6 +1,5 @@
-#include "mainwindow.h"
 #include <QApplication>
-#include <shape.h>
+#include <shapes/rectangle.h>
 #include <QtWidgets>
 
 class GraphicsView : public QGraphicsView
@@ -20,7 +19,7 @@ int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
     QGraphicsScene scene(-200, -200, 400, 400);
 
-    Shape *item = new Shape();
+    Rectangle *item = new Rectangle();
     scene.addItem(item);
 
     GraphicsView view(&scene);
