@@ -1,13 +1,34 @@
 #include "mainwindow.h"
 #include <QApplication>
+#include <shape.h>
+#include <QtWidgets>
 
-int main(int argc, char *argv[])
+class GraphicsView : public QGraphicsView
 {
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
-    //Test Oleg
-    //Test Igor
-    //Test JAVA
-    return a.exec();
+public:
+    GraphicsView(QGraphicsScene *scene) : QGraphicsView(scene)
+    {
+    }
+
+protected:
+    void resizeEvent(QResizeEvent *) override
+    {
+    }
+};
+
+int main(int argc, char *argv[]) {
+    QApplication app(argc, argv);
+    QGraphicsScene scene(-200, -200, 400, 400);
+
+    Shape *item = new Shape();
+    scene.addItem(item);
+
+    GraphicsView view(&scene);
+    view.setRenderHint(QPainter::Antialiasing);
+    view.setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
+    view.setBackgroundBrush(QColor(255, 255, 255));
+    view.setWindowTitle("MDP");
+    view.show();
+
+    return app.exec();
 }
