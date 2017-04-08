@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include <QApplication>
-#include <shape.h>
 #include <QtWidgets>
 #include <QSplitter>
 
@@ -22,7 +21,6 @@ int main(int argc, char *argv[]) {
 
     MainWindow window;
     window.show();
-
 
     return app.exec();
 }

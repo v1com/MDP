@@ -1,17 +1,16 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "shape.h"
+#include "shapes\block.h"
 #include <QSplitter>
 #include <QHBoxLayout>
 
 MainWindow::MainWindow(QWidget *parent) : QWidget(parent), ui(new Ui::MainWindow) {
+    
     //ui->setupUi(this);
-
-
     //QGraphicsScene scene(-200, -200, 400, 400);
 
     QGraphicsScene *scene = new QGraphicsScene(-200, -200, 400, 400);
-    Shape *item = new Shape();
+    Block *item = new Block();
     scene->addItem(item);
 
     QSplitter *h1Splitter = new QSplitter;

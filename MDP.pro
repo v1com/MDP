@@ -25,10 +25,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    shape.cpp \
-    KEK/kek.cpp
-
+        shapes\shape.cpp \
+        shapes\block.cpp
 HEADERS  += mainwindow.h \
-    shape.h
-
-FORMS    += mainwindow.ui
+    shapes\shape.h \
+    shapes\block.cpp
+FORMS += mainwindow.ui \
+    mainwindow.ui
