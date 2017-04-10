@@ -37,5 +37,5 @@ QRectF Bar::boundingRect() const
 
 void Bar::setWidth(int w)
 {
-    this->w = w;
+    this -> w = w;
 }
