@@ -1,0 +1,43 @@
+#include "mainwindow.h"
+#include <QApplication>
+#include <QtWidgets>
+<<<<<<< HEAD
+#include "shapes/block.h"
+#include "shapes/ifblock.h"
+=======
+#include <QSplitter>
+>>>>>>> 501e77a829061640a06bef04df2f24541ec93d97
+
+class GraphicsView : public QGraphicsView
+{
+public:
+    GraphicsView(QGraphicsScene *scene) : QGraphicsView(scene)
+    {
+    }
+
+protected:
+    void resizeEvent(QResizeEvent *) override
+    {
+    }
+};
+
+int main(int argc, char *argv[]) {
+    QApplication app(argc, argv);
+
+<<<<<<< HEAD
+    IfBlock *item = new IfBlock(-15,-15);
+    scene.addItem(item);
+
+    GraphicsView view(&scene);
+    view.setRenderHint(QPainter::Antialiasing);
+    view.setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
+    view.setBackgroundBrush(QColor(255, 255, 255));
+    view.setWindowTitle("MDP");
+    view.show();
+=======
+    MainWindow window;
+    window.show();
+>>>>>>> 501e77a829061640a06bef04df2f24541ec93d97
+
+    return app.exec();
+}

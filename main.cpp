@@ -1,7 +1,7 @@
+#include "mainwindow.h"
 #include <QApplication>
 #include <QtWidgets>
-#include "shapes/block.h"
-#include "shapes/ifblock.h"
+#include <QSplitter>
 
 class GraphicsView : public QGraphicsView
 {
@@ -18,17 +18,9 @@ protected:
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
-    QGraphicsScene scene(-200, -200, 400, 400);
 
-    IfBlock *item = new IfBlock(-15,-15);
-    scene.addItem(item);
-
-    GraphicsView view(&scene);
-    view.setRenderHint(QPainter::Antialiasing);
-    view.setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
-    view.setBackgroundBrush(QColor(255, 255, 255));
-    view.setWindowTitle("MDP");
-    view.show();
+    MainWindow window;
+    window.show();
 
     return app.exec();
 }
