@@ -24,8 +24,8 @@ void Block::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
     painter->setPen(Qt::NoPen);
     painter->setPen(QPen(Qt::black, 1));
     painter->setBrush(* new QBrush(Qt::gray));
-    painter->drawRect(x,y,w,h);
-    painter->drawText(-15,-15,100,50,0,"testtest\ntesttesttest");
+    painter->drawRect(x, y, w, h);
+    painter->drawText(-15, -15, 100, 50, 0, "testtest\ntesttesttest");
 }
 
 QRectF Block::boundingRect() const

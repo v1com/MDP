@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "shapes\block.h"
+#include "shapes\ifblock.h"
 #include <QSplitter>
 #include <QHBoxLayout>
 
@@ -10,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent), ui(new Ui::MainWindow
     //QGraphicsScene scene(-200, -200, 400, 400);
 
     QGraphicsScene *scene = new QGraphicsScene(-200, -200, 400, 400);
-    Block *item = new Block();
+    IfBlock *item = new IfBlock(-15, -15);
     scene->addItem(item);
 
     QSplitter *h1Splitter = new QSplitter;
