@@ -27,9 +27,15 @@ SOURCES += main.cpp\
         mainwindow.cpp \
         shapes/shape.cpp \
         shapes/block.cpp \
-    shapes/ifblock.cpp
+    shapes/ifblock.cpp \
+    shapes/entrance.cpp \
+    shapes/exit.cpp \
+    shapes/bar.cpp
 HEADERS  += mainwindow.h \
     shapes/shape.h \
     shapes/block.h \
-    shapes/ifblock.h
+    shapes/ifblock.h \
+    shapes/entrance.h \
+    shapes/exit.h \
+    shapes/bar.h
 FORMS += mainwindow.ui

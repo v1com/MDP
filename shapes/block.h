@@ -10,6 +10,8 @@ public:
     QRectF boundingRect() const override;
 private:
     int x, y, h, w;
+
+    Block * next;
 };
 
 #endif // Block_H

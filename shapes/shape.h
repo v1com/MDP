@@ -12,6 +12,7 @@ public:
 
 protected:
     int pixmap_w, pixmap_h;
+    int translate_x, translate_y;
 
     void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;

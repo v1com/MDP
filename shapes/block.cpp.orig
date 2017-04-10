@@ -9,12 +9,8 @@ Block::Block(int x, int y, int w, int h)
     this->w = w;
     this->h = h;
 
-    //Offset in order to the figures are not cut off
-    pixmap_w = w + 2;
-    pixmap_h = h + 2;
-
-    translate_x = - x + 1;
-    translate_y = - y + 1;
+    pixmap_w = w;
+    pixmap_h = h;
 
     setToolTip("Simple block");
     setCursor(Qt::OpenHandCursor);
@@ -28,8 +24,18 @@ void Block::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
     painter->setPen(Qt::NoPen);
     painter->setPen(QPen(Qt::black, 1));
     painter->setBrush(* new QBrush(Qt::gray));
+<<<<<<< HEAD
+    painter->drawRect(x,y,w,h);
+    painter->drawText(-15,-15,100,50,0,"testtest\ntesttesttest");
+=======
     painter->drawRect(x, y, w, h);
-    painter->drawText(x, y, w, h, 0, "testtest\ntesttesttest");
+    painter->drawText(-15, -15, 100, 50, 0, "testtest\ntesttesttest");
+}
+
+QRectF Block::boundingRect() const
+{
+    return QRectF(x, y, w, h);
+>>>>>>> 2c7c67e5de617ab078bd345eecefd74dc4a456af
 }
 
 QRectF Block::boundingRect() const

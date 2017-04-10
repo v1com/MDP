@@ -12,6 +12,11 @@ public:
 private:
     //Left point of romb
     int x, y;
+    const int w = 70;
+    const int h = 40;
+
+    IfBlock * true_branch;
+    IfBlock * false_branch;
 };
 
 #endif // IFBLOCK_H
