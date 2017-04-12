@@ -30,12 +30,16 @@ SOURCES += main.cpp\
     shapes/ifblock.cpp \
     shapes/entrance.cpp \
     shapes/exit.cpp \
-    shapes/bar.cpp
+    shapes/bar.cpp \
+    shapes/arrow.cpp \
+    diagram.cpp
 HEADERS  += mainwindow.h \
     shapes/shape.h \
     shapes/block.h \
     shapes/ifblock.h \
     shapes/entrance.h \
     shapes/exit.h \
-    shapes/bar.h
+    shapes/bar.h \
+    shapes/arrow.h \
+    diagram.h
 FORMS += mainwindow.ui

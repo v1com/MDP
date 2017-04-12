@@ -13,6 +13,8 @@ public:
 protected:
     int pixmap_w, pixmap_h;
     int translate_x, translate_y;
+    //number of vertex
+    int n_vertex;
 
     void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
