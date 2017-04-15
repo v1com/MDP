@@ -6,6 +6,20 @@ Shape::Shape()
 
 }
 
+int Shape::getWidth()
+{
+    return width;
+}
+
+int Shape::getHeight()
+{
+    return height;
+}
+
+QPoint Shape::getCoords() {
+    return QPoint(x, y);
+}
+
 void Shape::mousePressEvent(QGraphicsSceneMouseEvent *)
 {
     setCursor(Qt::ClosedHandCursor);

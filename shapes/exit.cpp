@@ -7,9 +7,10 @@ Exit::Exit(int x, int y)
     this->x = x;
     this->y = y;
 
+    width = height = outer_d;
     //Offset in order to the figures are not cut off
-    pixmap_w = outer_w + 2;
-    pixmap_h = outer_h + 2;
+    pixmap_w = outer_d + 2;
+    pixmap_h = outer_d + 2;
 
     translate_x = - x + 1;
     translate_y = - y + 1;
@@ -27,13 +28,16 @@ void Exit::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
     painter->setPen(QPen(Qt::black, 1));
 
     painter->setBrush(* new QBrush(Qt::gray));
-    painter->drawEllipse(x, y, outer_w,outer_h);
+    painter->drawEllipse(x, y, outer_d,outer_d);
 
     painter->setBrush(* new QBrush(Qt::black));
-    painter->drawEllipse(x + 5, y + 5, inner_w, inner_h);
+    painter->drawEllipse(x + 5, y + 5, inner_d, inner_d);
 }
+
+void Exit::addArrows(QGraphicsScene *scene){}
 
 QRectF Exit::boundingRect() const
 {
-    return QRectF(x, y, outer_w, outer_h);
+    return QRectF(x, y, outer_d, outer_d);
 }
+

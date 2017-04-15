@@ -5,6 +5,7 @@
 #include "shapes/entrance.h"
 #include "shapes/exit.h"
 #include "shapes/bar.h"
+#include "shapes/arrow.h"
 #include <QSplitter>
 #include <QHBoxLayout>
 
@@ -16,23 +17,27 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent), ui(new Ui::MainWindow
     QGraphicsScene *scene = new QGraphicsScene(0, 0, 400, 400);
 
     //---------testing shapes-----------------------
-    IfBlock *item = new IfBlock(30, 30);
-    scene->addItem(item);
+    Entrance *item1 = new Entrance(202, 30);
+    scene->addItem(item1);
 
-    IfBlock *item2 = new IfBlock(130, 130);
+    Block *item2 = new Block(160, 70, 100, 50);
     scene->addItem(item2);
 
-    Block *item3 = new Block(130, 300, 100, 50);
+    Arrow *arrow1 = new Arrow(QPoint(210, 45), item2, Arrow::DIRECTION_DOWN);
+    scene->addItem(arrow1);
+
+    IfBlock *item3 = new IfBlock(170, 150);
     scene->addItem(item3);
+    item3->addArrows(scene);
 
-    Entrance *item4 = new Entrance(50, 300);
+    Block *item4 = new Block(90, 220, 100, 50);
     scene->addItem(item4);
+    item4->addArrows(scene);
 
-    Exit *item5 = new Exit(50, 100);
+    Bar *item5 = new Bar(50, 300);
     scene->addItem(item5);
+    item5->addArrows(scene);
 
-    Bar *item6 = new Bar(0, 70);
-    scene->addItem(item6);
     //---------------------------------------------
 
     QSplitter *h1Splitter = new QSplitter;
