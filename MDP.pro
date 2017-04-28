@@ -41,5 +41,6 @@ HEADERS  += mainwindow.h \
     shapes/exit.h \
     shapes/bar.h \
     shapes/arrow.h \
-    diagram.h
+    diagram.h \
+    allocator/allocator.h
 FORMS += mainwindow.ui
