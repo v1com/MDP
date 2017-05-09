@@ -24,9 +24,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
-        shapes/shape.cpp \
-        shapes/block.cpp \
+    mainwindow.cpp \
+    scene.cpp \
+    view.cpp \
+    shapes/shape.cpp \
+    shapes/block.cpp \
     shapes/ifblock.cpp \
     shapes/entrance.cpp \
     shapes/exit.cpp \
@@ -34,6 +36,8 @@ SOURCES += main.cpp\
     shapes/arrow.cpp \
     diagram.cpp
 HEADERS  += mainwindow.h \
+    scene.h \
+    view.h \
     shapes/shape.h \
     shapes/block.h \
     shapes/ifblock.h \

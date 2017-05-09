@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QGraphicsView>
 #include <QtWidgets>
+
 namespace Ui {
 class MainWindow;
 }

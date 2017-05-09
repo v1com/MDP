@@ -1,23 +1,9 @@
-#include "mainwindow.h"
 #include <QApplication>
-#include <QtWidgets>
-#include <QSplitter>
+#include "mainwindow.h"
 
-class GraphicsView : public QGraphicsView
+int main(int argc, char * argv[])
 {
-public:
-    GraphicsView(QGraphicsScene *scene) : QGraphicsView(scene)
-    {
-    }
-
-protected:
-    void resizeEvent(QResizeEvent *) override
-    {
-    }
-};
-
-int main(int argc, char *argv[]) {
-    QApplication app(argc, argv);
+    QApplication app(argc,argv);
 
     MainWindow window;
     window.show();

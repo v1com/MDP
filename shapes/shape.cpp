@@ -1,5 +1,6 @@
 #include "shape.h"
 #include <QtWidgets>
+#include <QDrag>
 
 Shape::Shape()
 {
@@ -20,9 +21,22 @@ QPoint Shape::getCoords() {
     return QPoint(x, y);
 }
 
-void Shape::mousePressEvent(QGraphicsSceneMouseEvent *)
+void Shape::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     setCursor(Qt::ClosedHandCursor);
+
+    // Create the mime  data that will be transfered  from one scene
+    // to another
+    QMimeData * mimeData = new QMimeData;
+
+    Shape * item = this;
+    QByteArray byteArray(reinterpret_cast<char*>(&item),sizeof(Shape*));
+    mimeData->setData("Item",byteArray);
+
+    // start the event
+    QDrag * drag = new QDrag(event->widget());
+    drag->setMimeData(mimeData);
+    drag->start();
 }
 
 void Shape::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
@@ -60,4 +74,8 @@ void Shape::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 void Shape::mouseReleaseEvent(QGraphicsSceneMouseEvent *)
 {
     setCursor(Qt::OpenHandCursor);
+}
+
+Shape* Shape::clone() {
+    //return new Shape();
 }

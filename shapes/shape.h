@@ -15,6 +15,7 @@ public:
     int getWidth();
     int getHeight();
     QPoint getCoords();
+    Shape* clone();
 
 protected:
     int x, y, width, height;
