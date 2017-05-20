@@ -10,6 +10,8 @@ Block::Block(Scene *tmpScene, int x, int y, int w, int h)
     this->w = width = w;
     this->h = height = h;
 
+    type = 0;
+
     //Offset in order to the figures are not cut off
     pixmap_w = w + 2;
     pixmap_h = h + 2;
@@ -47,4 +49,14 @@ QRectF Block::boundingRect() const
 void Block::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {
     myScene->addItem(new Block(myScene, 200, 200, w, h));
+}
+
+QPoint Block::getArrowOut()
+{
+    return QPoint(x + w / 2, y + h);
+}
+
+QPoint Block::getArrowIn()
+{
+    return QPoint(x + w / 2, y);
 }

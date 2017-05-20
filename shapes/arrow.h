@@ -10,6 +10,7 @@ public:
 
     Arrow(QPoint from_point, QPoint to_point);
     Arrow(QPoint from_point, Shape *to_shape, const int direction);
+    Arrow(Shape *from_shape, Shape *to_shape);
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
     QPoint getFrom();

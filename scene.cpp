@@ -26,20 +26,26 @@ Scene::Scene(int i, Scene *tmpScene) : i(i)
         Block *item2 = new Block(tmpScene, 160, 70, 100, 50);
         addItem(item2);
 
-        Arrow *arrow1 = new Arrow(QPoint(210, 45), item2, Arrow::DIRECTION_DOWN);
+        Arrow *arrow1 = new Arrow(item1, item2);
         addItem(arrow1);
 
         IfBlock *item3 = new IfBlock(170, 150);
         addItem(item3);
-        item3->addArrows(this);
+
+        Arrow *arrow2 = new Arrow(item2, item3);
+        addItem(arrow2);
 
         Block *item4 = new Block(tmpScene, 90, 220, 100, 50);
         addItem(item4);
-        item4->addArrows(this);
 
-        Bar *item5 = new Bar(50, 300);
+        Bar *item5 = new Bar(250, 300);
         addItem(item5);
-        item5->addArrows(this);
+
+        Arrow *arrow3 = new Arrow(item3, item4);
+        addItem(arrow3);
+
+        Arrow *arrow4 = new Arrow(item3, item5);
+        addItem(arrow4);
 
         //---------------------------------------------
     }

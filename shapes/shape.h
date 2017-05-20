@@ -16,6 +16,10 @@ public:
     int getWidth();
     int getHeight();
     QPoint getCoords();
+    virtual QPoint getArrowOut() = 0;
+    virtual QPoint getArrowIn() = 0;
+
+    int getType();
 
 protected:
     int x, y, width, height;
@@ -23,6 +27,11 @@ protected:
     int translate_x, translate_y;
     //number of vertex
     int n_vertex;
+
+    QPoint arrow_out;
+    QPoint arrow_in;
+
+    int type;
 
     Scene *myScene;
 

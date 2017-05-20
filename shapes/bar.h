@@ -12,6 +12,8 @@ public:
     void addArrows(QGraphicsScene *scene);
     QRectF boundingRect() const override;
     void contextMenuEvent(QGraphicsSceneContextMenuEvent *event);
+    QPoint getArrowOut();
+    QPoint getArrowIn();
 
 public slots:
     void setWidth(QAction *action);

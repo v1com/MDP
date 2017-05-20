@@ -7,6 +7,8 @@ Exit::Exit(int x, int y)
     this->x = x;
     this->y = y;
 
+    type = 2;
+
     width = height = outer_d;
     //Offset in order to the figures are not cut off
     pixmap_w = outer_d + 2;
@@ -39,5 +41,15 @@ void Exit::addArrows(QGraphicsScene *scene){}
 QRectF Exit::boundingRect() const
 {
     return QRectF(x, y, outer_d, outer_d);
+}
+
+QPoint Exit::getArrowOut()
+{
+    return QPoint(x + width / 2, y + height);
+}
+
+QPoint Exit::getArrowIn()
+{
+    return QPoint(x + width / 2, y);
 }
 

@@ -12,6 +12,8 @@ Bar::Bar(int x, int y)
     width = w;
     height = h;
 
+    type = 3;
+
     //Offset in order to the figures are not cut off
     pixmap_w = w + 2;
     pixmap_h = h + 2;
@@ -83,4 +85,14 @@ void Bar::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 
     QObject::connect(menu, SIGNAL(triggered(QAction *)),
                      this, SLOT(setWidth(QAction *)));
+}
+
+QPoint Bar::getArrowOut()
+{
+    return QPoint(x + w / 2, y + h);
+}
+
+QPoint Bar::getArrowIn()
+{
+    return QPoint(x + w / 2, y);
 }
