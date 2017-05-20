@@ -10,6 +10,8 @@ public:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     void addArrows(QGraphicsScene *scene);
     QRectF boundingRect() const override;
+    QPoint getArrowOut();
+    QPoint getArrowIn();
 private:
     int h, w;
 

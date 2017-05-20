@@ -23,20 +23,26 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent), ui(new Ui::MainWindow
     Block *item2 = new Block(160, 70, 100, 50);
     scene->addItem(item2);
 
-    Arrow *arrow1 = new Arrow(QPoint(210, 45), item2, Arrow::DIRECTION_DOWN);
+    Arrow *arrow1 = new Arrow(item1, item2);
     scene->addItem(arrow1);
 
-    IfBlock *item3 = new IfBlock(170, 150);
-    scene->addItem(item3);
-    item3->addArrows(scene);
+    IfBlock *ifblock1 = new IfBlock(160, 220);
+    scene->addItem(ifblock1);
 
-    Block *item4 = new Block(90, 220, 100, 50);
-    scene->addItem(item4);
-    item4->addArrows(scene);
+    Arrow *arrow2 = new Arrow(item2, ifblock1);
+    scene->addItem(arrow2);
 
-    Bar *item5 = new Bar(50, 300);
-    scene->addItem(item5);
-    item5->addArrows(scene);
+    Block *block2 = new Block(100, 300, 100, 50);
+    scene->addItem(block2);
+
+    Arrow *arrow3 = new Arrow(ifblock1, block2);
+    scene->addItem(arrow3);
+
+    Block *block3 = new Block(300, 300, 100, 50);
+    scene->addItem(block3);
+
+    Arrow *arrow4 = new Arrow(ifblock1, block3);
+    scene->addItem(arrow4);
 
     //---------------------------------------------
 

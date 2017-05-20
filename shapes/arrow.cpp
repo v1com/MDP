@@ -1,4 +1,5 @@
 #include "shapes/arrow.h"
+#include "cmath"
 #include <QPainter>
 
 Arrow::Arrow(QPoint from_point, QPoint to_point){
@@ -11,6 +12,38 @@ Arrow::Arrow(QPoint from_point, QPoint to_point){
     else {
         lines.push_back(QLine(from, QPoint(to.x(), from.y())));
         lines.push_back(QLine(QPoint(to.x(), from.y()), to));
+    }
+
+    points[0] = to;
+    points[1] = QPoint(to.x() - 5, to.y() - 5);
+    points[2] = QPoint(to.x() + 5, to.y() - 5);
+}
+
+Arrow::Arrow(Shape *from_shape, Shape *to_shape)
+{
+    from = from_shape->getArrowOut();
+    to = to_shape->getArrowIn();
+
+    //if from_shape is IfBlock
+    if (from_shape->getType() == 4){
+        if (from.y() == to.y()) {
+            lines.push_back(QLine(from, to));
+        }
+        else {
+            lines.push_back(QLine(from, QPoint(to.x(), from.y())));
+            lines.push_back(QLine(QPoint(to.x(), from.y()), to));
+        }
+    }
+    else {
+        if (from.x() == to.x()) {
+            lines.push_back(QLine(from, to));
+        }
+        else {
+            int dist = abs(from.y() - to.y());
+            lines.push_back(QLine(from, QPoint(from.x(), from.y() + dist / 4)));
+            lines.push_back(QLine(QPoint(from.x(), from.y() + dist / 4), QPoint(to.x(), from.y() + dist / 4)));
+            lines.push_back(QLine(QPoint(to.x(), from.y() + dist / 4), to));
+        }
     }
 
     points[0] = to;

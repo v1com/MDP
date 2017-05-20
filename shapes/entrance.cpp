@@ -10,6 +10,8 @@ Entrance::Entrance(int x, int y)
     width = w;
     height = h;
 
+    type = 1;
+
     //Offset in order to the figures are not cut off
     pixmap_w = w + 2;
     pixmap_h = h + 2;
@@ -42,5 +44,15 @@ void Entrance::addArrows(QGraphicsScene *scene){
 QRectF Entrance::boundingRect() const
 {
     return QRectF(x, y, w, h);
+}
+
+QPoint Entrance::getArrowOut()
+{
+    return QPoint(x + w / 2, y + h);
+}
+
+QPoint Entrance::getArrowIn()
+{
+    return QPoint(x + w / 2, y);
 }
 

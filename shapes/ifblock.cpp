@@ -10,6 +10,8 @@ IfBlock::IfBlock(int x, int y)
     width = w;
     height = h;
 
+    type = 4;
+
     //Offset in order to the figures are not cut off
     pixmap_w = w + 2;
     pixmap_h = h + 2;
@@ -50,5 +52,21 @@ void IfBlock::addArrows(QGraphicsScene *scene) {
 QRectF IfBlock::boundingRect() const
 {
     return QRectF(x, y, w, h);
+}
+
+QPoint IfBlock::getArrowOut()
+{
+    if (is_first_arrow){
+        is_first_arrow = false;
+        return QPoint(x, y + h / 2);
+    }
+    else {
+        return QPoint(x + w, y + h / 2);
+    }
+}
+
+QPoint IfBlock::getArrowIn()
+{
+    return QPoint(x + w / 2, y);
 }
 

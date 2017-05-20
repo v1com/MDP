@@ -20,6 +20,11 @@ QPoint Shape::getCoords() {
     return QPoint(x, y);
 }
 
+int Shape::getType()
+{
+    return type;
+}
+
 void Shape::mousePressEvent(QGraphicsSceneMouseEvent *)
 {
     setCursor(Qt::ClosedHandCursor);
