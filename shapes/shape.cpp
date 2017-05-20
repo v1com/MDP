@@ -75,7 +75,3 @@ void Shape::mouseReleaseEvent(QGraphicsSceneMouseEvent *)
 {
     setCursor(Qt::OpenHandCursor);
 }
-
-Shape* Shape::clone() {
-    //return new Shape();
-}
