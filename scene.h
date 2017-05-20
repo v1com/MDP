@@ -8,13 +8,15 @@
 class Scene: public QGraphicsScene
 {
 public:
-    Scene(int i);
+    Scene(int i, Scene *ttt);
+
+    Scene *leftScene;
 
 protected:
-    virtual void dragEnterEvent ( QGraphicsSceneDragDropEvent * event );
-    virtual void dragLeaveEvent ( QGraphicsSceneDragDropEvent * event );
-    virtual void dragMoveEvent ( QGraphicsSceneDragDropEvent * event );
-    virtual void dropEvent ( QGraphicsSceneDragDropEvent * event );
+    void dragEnterEvent (QGraphicsSceneDragDropEvent * event);
+    void dragLeaveEvent (QGraphicsSceneDragDropEvent * event);
+    void dragMoveEvent (QGraphicsSceneDragDropEvent * event);
+    void dropEvent (QGraphicsSceneDragDropEvent * event);
 
     int i;
 };

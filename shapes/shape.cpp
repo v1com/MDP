@@ -24,6 +24,7 @@ QPoint Shape::getCoords() {
 void Shape::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     setCursor(Qt::ClosedHandCursor);
+    qDebug() << "mousePressEvent";
 
     // Create the mime  data that will be transfered  from one scene
     // to another
@@ -36,7 +37,7 @@ void Shape::mousePressEvent(QGraphicsSceneMouseEvent *event)
     // start the event
     QDrag * drag = new QDrag(event->widget());
     drag->setMimeData(mimeData);
-    drag->start();
+    drag->exec();
 }
 
 void Shape::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
@@ -74,4 +75,16 @@ void Shape::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 void Shape::mouseReleaseEvent(QGraphicsSceneMouseEvent *)
 {
     setCursor(Qt::OpenHandCursor);
+}
+
+void Shape::dropEvent(QGraphicsSceneDragDropEvent *event)
+{
+    //Add arrow
+    qDebug() << "shape drop event";
+
+    QByteArray byteArray = event->mimeData()->data("Item");
+    QByteArray *newArray = new QByteArray();
+    newArray->append(byteArray.data());
+    Shape *shape = *reinterpret_cast<Shape**>(byteArray.data());
+
 }

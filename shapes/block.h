@@ -6,10 +6,14 @@
 class Block : public Shape
 {
 public:
-    Block(int x, int y, int w, int h);
+    Block(Scene *tmpScene, int x, int y, int w, int h);
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     void addArrows(QGraphicsScene *scene);
     QRectF boundingRect() const override;
+
+protected:
+     void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event);
+
 private:
     int h, w;
 

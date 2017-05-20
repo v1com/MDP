@@ -2,8 +2,9 @@
 #include <QWidget>
 #include <QPainter>
 
-Block::Block(int x, int y, int w, int h)
+Block::Block(Scene *tmpScene, int x, int y, int w, int h)
 {
+    myScene = tmpScene;
     this->x = x;
     this->y = y;
     this->w = width = w;
@@ -43,3 +44,7 @@ QRectF Block::boundingRect() const
     return QRectF(x, y, w, h);
 }
 
+void Block::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
+{
+    myScene->addItem(new Block(myScene, 200, 200, w, h));
+}

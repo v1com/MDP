@@ -2,6 +2,7 @@
 #define SHAPE_H
 #include <QGraphicsItem>
 #include <QGraphicsView>
+#include <scene.h>
 
 class Shape : public QObject, public QGraphicsItem
 {
@@ -23,9 +24,13 @@ protected:
     //number of vertex
     int n_vertex;
 
+    Scene *myScene;
+
     void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
+
+    void dropEvent (QGraphicsSceneDragDropEvent *event) override;
 };
 
 #endif // SHAPE_H

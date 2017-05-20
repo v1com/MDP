@@ -14,7 +14,7 @@
 #include "shapes/arrow.h"
 #include "shapes/shape.h"
 
-Scene::Scene(int i) : i(i)
+Scene::Scene(int i, Scene *tmpScene) : i(i)
 {
     setSceneRect(0, 0, 400, 400);
 
@@ -23,7 +23,7 @@ Scene::Scene(int i) : i(i)
         Entrance *item1 = new Entrance(202, 30);
         addItem(item1);
 
-        Block *item2 = new Block(160, 70, 100, 50);
+        Block *item2 = new Block(tmpScene, 160, 70, 100, 50);
         addItem(item2);
 
         Arrow *arrow1 = new Arrow(QPoint(210, 45), item2, Arrow::DIRECTION_DOWN);
@@ -33,7 +33,7 @@ Scene::Scene(int i) : i(i)
         addItem(item3);
         item3->addArrows(this);
 
-        Block *item4 = new Block(90, 220, 100, 50);
+        Block *item4 = new Block(tmpScene, 90, 220, 100, 50);
         addItem(item4);
         item4->addArrows(this);
 
@@ -47,26 +47,32 @@ Scene::Scene(int i) : i(i)
 
 void Scene::dragEnterEvent ( QGraphicsSceneDragDropEvent * event )
 {
-    qDebug() << "scene" << i << "drag enter";
+   // qDebug() << "scene" << i << "drag enter";
 }
 
 void Scene::dragLeaveEvent ( QGraphicsSceneDragDropEvent * event )
 {
-    qDebug() << "scene" << i << "drag leave";
+   // qDebug() << "scene" << i << "drag leave";
 }
 
 void Scene::dragMoveEvent ( QGraphicsSceneDragDropEvent * event )
 {
-    qDebug() << "scene" << i << "drag move";
+   // qDebug() << "scene" << i << "drag move";
 }
 
-void Scene::dropEvent ( QGraphicsSceneDragDropEvent * event )
+void Scene::dropEvent (QGraphicsSceneDragDropEvent *event)
 {
     qDebug() << "scene" << i << "drop";
 
-    QByteArray byteArray = event->mimeData()->data("Item");
-    QByteArray *newArray = new QByteArray();
-    newArray->append(byteArray.data());
-    Shape *shape = *reinterpret_cast<Shape**>(byteArray.data());
-    addItem(shape);
+    if(i == 2) {
+        return;
+    } else {
+        QByteArray byteArray = event->mimeData()->data("Item");
+        QByteArray *newArray = new QByteArray();
+        newArray->append(byteArray.data());
+        Shape *shape = *reinterpret_cast<Shape**>(byteArray.data());
+        shape->setX(event->scenePos().x() - shape->getCoords().x());
+        shape->setY(event->scenePos().y() - shape->getCoords().y());
+        update();
+    }
 }
