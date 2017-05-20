@@ -14,24 +14,6 @@
 #include "shapes/arrow.h"
 #include "shapes/shape.h"
 
-Item::Item(int x, int y) : QGraphicsEllipseItem(x, y, 50, 50) {}
-
-void Item::mousePressEvent(QGraphicsSceneMouseEvent *event)
-{
-    qDebug() << "item mouse press";
-
-    QMimeData * mimeData = new QMimeData;
-
-    Item * item = this;
-    QByteArray byteArray(reinterpret_cast<char*>(&item),sizeof(Item*));
-    mimeData->setData("Item",byteArray);
-
-    // start the event
-    QDrag * drag = new QDrag(event->widget());
-    drag->setMimeData(mimeData);
-    drag->start();
-}
-
 Scene::Scene(int i) : i(i)
 {
     setSceneRect(0, 0, 400, 400);
@@ -77,7 +59,6 @@ void Scene::dragMoveEvent ( QGraphicsSceneDragDropEvent * event )
 {
     qDebug() << "scene" << i << "drag move";
 }
-
 
 void Scene::dropEvent ( QGraphicsSceneDragDropEvent * event )
 {

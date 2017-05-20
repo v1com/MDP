@@ -5,18 +5,6 @@
 #include <QGraphicsEllipseItem>
 #include<QPointF>
 
-class Item;
-
-class Item: public QGraphicsEllipseItem
-{
-public:
-    Item(int x,int y);
-
-protected:
-    void mousePressEvent(QGraphicsSceneMouseEvent *event);
-};
-
-
 class Scene: public QGraphicsScene
 {
 public:
