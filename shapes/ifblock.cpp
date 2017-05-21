@@ -1,9 +1,15 @@
 #include "ifblock.h"
 #include <QWidget>
 #include <QPainter>
+#include <QDebug>
+#include <QByteArray>
+#include <QGraphicsSceneDragDropEvent>
+#include <QMimeData>
+#include <QDrag>
 
-IfBlock::IfBlock(int x, int y)
+IfBlock::IfBlock(Scene *tmpScene, int x, int y)
 {
+    myScene = tmpScene;
     this->x = x;
     this->y = y;
 
@@ -52,6 +58,25 @@ void IfBlock::addArrows(QGraphicsScene *scene) {
 QRectF IfBlock::boundingRect() const
 {
     return QRectF(x, y, w, h);
+}
+
+void IfBlock::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
+{
+    if(!isDefault) {
+        qDebug() << "Block::mouseDoubleClickEvent";
+        QMimeData * mimeData = new QMimeData;
+
+        Shape * item = this;
+        QByteArray byteArray(reinterpret_cast<char*>(&item),sizeof(Shape*));
+        mimeData->setData("Item",byteArray);
+
+        // start the event
+        QDrag * drag = new QDrag(event->widget());
+        drag->setMimeData(mimeData);
+        drag->exec();
+    } else {
+        myScene->addItem(new IfBlock(myScene, 200, 200));
+    }
 }
 
 QPoint IfBlock::getArrowOut()

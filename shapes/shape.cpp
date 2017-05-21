@@ -1,10 +1,11 @@
+#include "arrow.h"
 #include "shape.h"
 #include <QtWidgets>
 #include <QDrag>
 
 Shape::Shape()
 {
-
+    isDefault = false;
 }
 
 int Shape::getWidth()
@@ -26,28 +27,33 @@ int Shape::getType()
     return type;
 }
 
-
 void Shape::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     setCursor(Qt::ClosedHandCursor);
-    qDebug() << "mousePressEvent";
+     qDebug() << "Shape::mousePressEvent";
 
-    // Create the mime  data that will be transfered  from one scene
-    // to another
-    QMimeData * mimeData = new QMimeData;
+    if(event->button() == Qt::RightButton)
+    {
+        qDebug() << "Shape::RightButton";
+        QMimeData * mimeData = new QMimeData;
 
-    Shape * item = this;
-    QByteArray byteArray(reinterpret_cast<char*>(&item),sizeof(Shape*));
-    mimeData->setData("Item",byteArray);
+        Shape * item = this;
+        QByteArray byteArray(reinterpret_cast<char*>(&item),sizeof(Shape*));
+        mimeData->setData("Item",byteArray);
 
-    // start the event
-    QDrag * drag = new QDrag(event->widget());
-    drag->setMimeData(mimeData);
-    drag->exec();
+        // start the event
+        QDrag * drag = new QDrag(event->widget());
+        drag->setMimeData(mimeData);
+        drag->exec();
+    } else {
+        qDebug() << "Shape::LeftButton";
+    }
+
 }
 
 void Shape::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
+    qDebug() << "Shape::mouseMoveEvent";
     if (QLineF(event->screenPos(), event->buttonDownScreenPos(Qt::LeftButton))
         .length() < QApplication::startDragDistance()) {
         return;
@@ -74,14 +80,36 @@ void Shape::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     drag->setPixmap(pixmap);
     drag->setHotSpot(QPoint(15, 20));
 
-    drag->exec();
-    setCursor(Qt::OpenHandCursor);
+   // drag->exec();
 }
 
-void Shape::mouseReleaseEvent(QGraphicsSceneMouseEvent *)
+void Shape::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
+    qDebug() << "Shape::mouseReleaseEvent";
     setCursor(Qt::OpenHandCursor);
+
+    if(isDefault) {
+        return;
+    } else {
+        this->setX(event->scenePos().x() - this->getCoords().x());
+        this->setY(event->scenePos().y() - this->getCoords().y());
+    }
 }
+
+//void Shape::dragEnterEvent ( QGraphicsSceneDragDropEvent * event )
+//{
+//    qDebug() << "Shape::dragEnterEvent ";
+//}
+
+//void Shape::dragLeaveEvent ( QGraphicsSceneDragDropEvent * event )
+//{
+//    qDebug() << "Shape::dragLeaveEvent";
+//}
+
+//void Shape::dragMoveEvent(QGraphicsSceneDragDropEvent * event )
+//{
+//    qDebug() << "Shape::dragMoveEvent";
+//}
 
 void Shape::dropEvent(QGraphicsSceneDragDropEvent *event)
 {
@@ -93,4 +121,7 @@ void Shape::dropEvent(QGraphicsSceneDragDropEvent *event)
     newArray->append(byteArray.data());
     Shape *shape = *reinterpret_cast<Shape**>(byteArray.data());
 
+    Arrow *arrow = new Arrow(shape, this);
+    this->scene()->addItem(arrow);
+    this->scene()->update();
 }

@@ -1,9 +1,15 @@
 #include "block.h"
 #include <QWidget>
 #include <QPainter>
+#include <QDebug>
+#include <QByteArray>
+#include <QGraphicsSceneDragDropEvent>
+#include <QMimeData>
+#include <QDrag>
 
 Block::Block(Scene *tmpScene, int x, int y, int w, int h)
 {
+    setAcceptDrops(true);
     myScene = tmpScene;
     this->x = x;
     this->y = y;
@@ -48,7 +54,21 @@ QRectF Block::boundingRect() const
 
 void Block::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {
-    myScene->addItem(new Block(myScene, 200, 200, w, h));
+    if(!isDefault) {
+        qDebug() << "Block::mouseDoubleClickEvent";
+        QMimeData * mimeData = new QMimeData;
+
+        Shape * item = this;
+        QByteArray byteArray(reinterpret_cast<char*>(&item),sizeof(Shape*));
+        mimeData->setData("Item",byteArray);
+
+        // start the event
+        QDrag * drag = new QDrag(event->widget());
+        drag->setMimeData(mimeData);
+        drag->exec();
+    } else {
+        myScene->addItem(new Block(myScene, 200, 200, w, h));
+    }
 }
 
 QPoint Block::getArrowOut()

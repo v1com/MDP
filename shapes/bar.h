@@ -7,7 +7,7 @@ class Bar : public Shape
 {
     Q_OBJECT
 public:
-    Bar(int x, int y);
+    Bar(Scene *tmpScene, int x, int y);
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     void addArrows(QGraphicsScene *scene);
     QRectF boundingRect() const override;
@@ -17,6 +17,10 @@ public:
 
 public slots:
     void setWidth(QAction *action);
+
+protected:
+     void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event);
+
 private:
     int w;
     const int h = 5;

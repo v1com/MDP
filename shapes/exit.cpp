@@ -1,9 +1,15 @@
 #include "exit.h"
 #include <QWidget>
 #include <QPainter>
+#include <QDebug>
+#include <QByteArray>
+#include <QGraphicsSceneDragDropEvent>
+#include <QMimeData>
+#include <QDrag>
 
-Exit::Exit(int x, int y)
+Exit::Exit(Scene *tmpScene, int x, int y)
 {
+    myScene = tmpScene;
     this->x = x;
     this->y = y;
 
@@ -34,6 +40,25 @@ void Exit::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
 
     painter->setBrush(* new QBrush(Qt::black));
     painter->drawEllipse(x + 5, y + 5, inner_d, inner_d);
+}
+
+void Exit::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
+{
+    if(!isDefault) {
+        qDebug() << "Block::mouseDoubleClickEvent";
+        QMimeData * mimeData = new QMimeData;
+
+        Shape * item = this;
+        QByteArray byteArray(reinterpret_cast<char*>(&item),sizeof(Shape*));
+        mimeData->setData("Item",byteArray);
+
+        // start the event
+        QDrag * drag = new QDrag(event->widget());
+        drag->setMimeData(mimeData);
+        drag->exec();
+    } else {
+        myScene->addItem(new Exit(myScene, 200, 200));
+    }
 }
 
 void Exit::addArrows(QGraphicsScene *scene){}

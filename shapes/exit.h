@@ -5,12 +5,14 @@
 class Exit : public Shape
 {
 public:
-    Exit(int x, int y);
+    Exit(Scene *tmpScene, int x, int y);
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     void addArrows(QGraphicsScene *scene);
     QRectF boundingRect() const override;
     QPoint getArrowOut();
     QPoint getArrowIn();
+protected:
+     void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event);
 private:
     const int inner_d = 15;
     const int outer_d = 25;

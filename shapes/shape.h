@@ -18,6 +18,7 @@ public:
     QPoint getCoords();
     virtual QPoint getArrowOut() = 0;
     virtual QPoint getArrowIn() = 0;
+    bool isDefault;
 
     int getType();
 
@@ -39,7 +40,10 @@ protected:
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
 
-    void dropEvent (QGraphicsSceneDragDropEvent *event) override;
+//    void dragEnterEvent(QGraphicsSceneDragDropEvent * event) override;
+//    void dragLeaveEvent(QGraphicsSceneDragDropEvent * event) override;
+//    void dragMoveEvent(QGraphicsSceneDragDropEvent * event) override;
+    void dropEvent(QGraphicsSceneDragDropEvent * event) override;
 };
 
 #endif // SHAPE_H

@@ -12,10 +12,8 @@ public:
     QRectF boundingRect() const override;
     QPoint getArrowOut();
     QPoint getArrowIn();
-
 protected:
      void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event);
-
 private:
     int h, w;
 

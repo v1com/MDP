@@ -2,9 +2,15 @@
 #include <QWidget>
 #include <QtWidgets>
 #include <QPainter>
+#include <QDebug>
+#include <QByteArray>
+#include <QGraphicsSceneDragDropEvent>
+#include <QMimeData>
+#include <QDrag>
 
-Bar::Bar(int x, int y)
+Bar::Bar(Scene *tmpScene, int x, int y)
 {
+    myScene = tmpScene;
     this->x = x;
     this->y = y;
     w = 100;
@@ -85,6 +91,25 @@ void Bar::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 
     QObject::connect(menu, SIGNAL(triggered(QAction *)),
                      this, SLOT(setWidth(QAction *)));
+}
+
+void Bar::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
+{
+    if(!isDefault) {
+        qDebug() << "Block::mouseDoubleClickEvent";
+        QMimeData * mimeData = new QMimeData;
+
+        Shape * item = this;
+        QByteArray byteArray(reinterpret_cast<char*>(&item),sizeof(Shape*));
+        mimeData->setData("Item",byteArray);
+
+        // start the event
+        QDrag * drag = new QDrag(event->widget());
+        drag->setMimeData(mimeData);
+        drag->exec();
+    } else {
+        myScene->addItem(new Bar(myScene, 200, 200));
+    }
 }
 
 QPoint Bar::getArrowOut()
