@@ -20,6 +20,8 @@ public slots:
 private:
     int w;
     const int h = 5;
+    bool is_first_arrow = true;
+    bool is_first_in_arrow = true;
 
     std::list <Arrow *> arrows;
 };

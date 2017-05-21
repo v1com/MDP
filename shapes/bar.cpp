@@ -7,7 +7,7 @@ Bar::Bar(int x, int y)
 {
     this->x = x;
     this->y = y;
-    w = 150;
+    w = 100;
 
     width = w;
     height = h;
@@ -89,10 +89,29 @@ void Bar::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 
 QPoint Bar::getArrowOut()
 {
-    return QPoint(x + w / 2, y + h);
+    if (is_first_arrow) {
+        is_first_arrow = false;
+        return QPoint(x + w / 2, y + h);
+    }
+    else {
+        auto myScene = scene();
+        w += 110;
+        myScene->update();
+        return QPoint(x + w - 50, y + h);
+    }
 }
 
 QPoint Bar::getArrowIn()
 {
-    return QPoint(x + w / 2, y);
+    if (is_first_in_arrow) {
+        is_first_in_arrow = false;
+        return QPoint(x + w / 2, y);
+    }
+    else {
+        auto myScene = scene();
+        w += 110;
+        myScene->update();
+        return QPoint(x + w - 50, y);
+    }
+
 }

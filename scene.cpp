@@ -47,6 +47,37 @@ Scene::Scene(int i, Scene *tmpScene) : i(i)
         Arrow *arrow4 = new Arrow(item3, item5);
         addItem(arrow4);
 
+        Block *item6 = new Block(tmpScene, 250, 350, 100, 50);
+        addItem(item6);
+
+        Arrow *arrow5 = new Arrow(item5, item6);
+        addItem(arrow5);
+
+        Block *item7 = new Block(tmpScene, 360, 350, 100, 50);
+        addItem(item7);
+
+        Arrow *arrow6 = new Arrow(item5, item7);
+        addItem(arrow6);
+
+        Block *item8 = new Block(tmpScene, 470, 350, 100, 50);
+        addItem(item8);
+
+        Arrow *arrow7 = new Arrow(item5, item8);
+        addItem(arrow7);
+
+        Bar *item9 = new Bar(250, 450);
+        addItem(item9);
+
+        Arrow *arrow8 = new Arrow(item6, item9);
+        addItem(arrow8);
+
+        Arrow *arrow9 = new Arrow(item7, item9);
+        addItem(arrow9);
+
+        Arrow *arrow10 = new Arrow(item8, item9);
+        addItem(arrow10);
+
+
         //---------------------------------------------
     }
 }
