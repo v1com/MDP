@@ -11,8 +11,8 @@
 Bar::Bar(Scene *tmpScene, int x, int y)
 {
     myScene = tmpScene;
-    this->x = x;
-    this->y = y;
+    this->myX = x;
+    this->myY = y;
     w = 100;
 
     width = w;
@@ -42,7 +42,7 @@ void Bar::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidg
     painter->setPen(Qt::NoPen);
     painter->setPen(QPen(Qt::black, 1));
     painter->setBrush(* new QBrush(Qt::black));
-    painter->drawRect(x, y, w, h);
+    painter->drawRect(myX, myY, w, h);
 }
 
 void Bar::addArrows(QGraphicsScene *scene){
@@ -53,7 +53,7 @@ void Bar::addArrows(QGraphicsScene *scene){
 
 QRectF Bar::boundingRect() const
 {
-    return QRectF(x, y, w, h);
+    return QRectF(myX, myY, w, h);
 }
 
 void Bar::setWidth(QAction *action)
@@ -62,8 +62,8 @@ void Bar::setWidth(QAction *action)
     if (action->text() == "Add arrow") {
         w += 110;
         Arrow *last = arrows.back();
-        arrows.push_back(new Arrow(QPoint(last->getFrom().x() + 110, y + h),
-                                   QPoint(last->getFrom().x() + 110, y + h + 30)));
+        arrows.push_back(new Arrow(QPoint(last->getFrom().x() + 110, myY + h),
+                                   QPoint(last->getFrom().x() + 110, myY + h + 30)));
 
         myScene->addItem(arrows.back());
     }
@@ -116,13 +116,13 @@ QPoint Bar::getArrowOut()
 {
     if (is_first_arrow) {
         is_first_arrow = false;
-        return QPoint(x + w / 2, y + h);
+        return QPoint(myX + w / 2, myY + h);
     }
     else {
         auto myScene = scene();
         w += 110;
         myScene->update();
-        return QPoint(x + w - 50, y + h);
+        return QPoint(myX + w - 50, myY + h);
     }
 }
 
@@ -130,13 +130,13 @@ QPoint Bar::getArrowIn()
 {
     if (is_first_in_arrow) {
         is_first_in_arrow = false;
-        return QPoint(x + w / 2, y);
+        return QPoint(myX + w / 2, myY);
     }
     else {
         auto myScene = scene();
         w += 110;
         myScene->update();
-        return QPoint(x + w - 50, y);
+        return QPoint(myX + w - 50, myY);
     }
 
 }

@@ -23,7 +23,7 @@ public:
     int getType();
 
 protected:
-    int x, y, width, height;
+    int myX, myY, width, height;
     int pixmap_w, pixmap_h;
     int translate_x, translate_y;
     //number of vertex

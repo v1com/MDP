@@ -10,8 +10,8 @@
 Entrance::Entrance(Scene *tmpScene, int x, int y)
 {
     myScene = tmpScene;
-    this->x = x;
-    this->y = y;
+    this->myX = x;
+    this->myY = y;
 
     width = w;
     height = h;
@@ -40,7 +40,7 @@ void Entrance::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     painter->setPen(Qt::NoPen);
     painter->setPen(QPen(Qt::black, 1));
     painter->setBrush(* new QBrush(Qt::black));
-    painter->drawEllipse(x, y, w, h);
+    painter->drawEllipse(myX, myY, w, h);
 }
 
 void Entrance::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
@@ -68,16 +68,16 @@ void Entrance::addArrows(QGraphicsScene *scene){
 
 QRectF Entrance::boundingRect() const
 {
-    return QRectF(x, y, w, h);
+    return QRectF(myX, myY, w, h);
 }
 
 QPoint Entrance::getArrowOut()
 {
-    return QPoint(x + w / 2, y + h);
+    return QPoint(myX + w / 2, myY + h);
 }
 
 QPoint Entrance::getArrowIn()
 {
-    return QPoint(x + w / 2, y);
+    return QPoint(myX + w / 2, myY);
 }
 

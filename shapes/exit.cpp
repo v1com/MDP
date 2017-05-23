@@ -10,8 +10,8 @@
 Exit::Exit(Scene *tmpScene, int x, int y)
 {
     myScene = tmpScene;
-    this->x = x;
-    this->y = y;
+    this->myX = x;
+    this->myY = y;
 
     type = 2;
 
@@ -36,10 +36,10 @@ void Exit::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
     painter->setPen(QPen(Qt::black, 1));
 
     painter->setBrush(* new QBrush(Qt::gray));
-    painter->drawEllipse(x, y, outer_d,outer_d);
+    painter->drawEllipse(myX, myY, outer_d,outer_d);
 
     painter->setBrush(* new QBrush(Qt::black));
-    painter->drawEllipse(x + 5, y + 5, inner_d, inner_d);
+    painter->drawEllipse(myX + 5, myY + 5, inner_d, inner_d);
 }
 
 void Exit::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
@@ -65,16 +65,16 @@ void Exit::addArrows(QGraphicsScene *scene){}
 
 QRectF Exit::boundingRect() const
 {
-    return QRectF(x, y, outer_d, outer_d);
+    return QRectF(myX, myY, outer_d, outer_d);
 }
 
 QPoint Exit::getArrowOut()
 {
-    return QPoint(x + width / 2, y + height);
+    return QPoint(myX + width / 2, myY + height);
 }
 
 QPoint Exit::getArrowIn()
 {
-    return QPoint(x + width / 2, y);
+    return QPoint(myX + width / 2, myY);
 }
 

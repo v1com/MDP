@@ -11,8 +11,8 @@ Block::Block(Scene *tmpScene, int x, int y, int w, int h)
 {
     setAcceptDrops(true);
     myScene = tmpScene;
-    this->x = x;
-    this->y = y;
+    this->myX = x;
+    this->myY = y;
     this->w = width = w;
     this->h = height = h;
 
@@ -39,8 +39,8 @@ void Block::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
     painter->setPen(Qt::NoPen);
     painter->setPen(QPen(Qt::black, 1));
     painter->setBrush(* new QBrush(Qt::gray));
-    painter->drawRect(x, y, w, h);
-    painter->drawText(x, y, w, h, 0, "testtest\ntesttesttest");
+    painter->drawRect(myX, myY, w, h);
+    painter->drawText(myX, myY, w, h, 0, "testtest\ntesttesttest");
 }
 
 void Block::addArrows(QGraphicsScene *scene){
@@ -49,13 +49,13 @@ void Block::addArrows(QGraphicsScene *scene){
 
 QRectF Block::boundingRect() const
 {
-    return QRectF(x, y, w, h);
+    return QRectF(myX, myY, w, h);
 }
 
 void Block::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {
     if(!isDefault) {
-        qDebug() << "Block::mouseDoubleClickEvent";
+        qDebug() << "Block::mouseDoubleClickEvent x = " << this->getCoords().x() << " y = " << this->getCoords().y();
         QMimeData * mimeData = new QMimeData;
 
         Shape * item = this;
@@ -73,10 +73,10 @@ void Block::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 
 QPoint Block::getArrowOut()
 {
-    return QPoint(x + w / 2, y + h);
+    return QPoint(myX + w / 2, myY + h);
 }
 
 QPoint Block::getArrowIn()
 {
-    return QPoint(x + w / 2, y);
+    return QPoint(myX + w / 2, myY);
 }

@@ -10,8 +10,8 @@
 IfBlock::IfBlock(Scene *tmpScene, int x, int y)
 {
     myScene = tmpScene;
-    this->x = x;
-    this->y = y;
+    this->myX = x;
+    this->myY = y;
 
     width = w;
     height = h;
@@ -42,10 +42,10 @@ void IfBlock::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, Q
     painter->setBrush(* new QBrush(Qt::gray));
 
     QPoint points[4] = {
-        QPoint(x, y + h / 2),
-        QPoint(x + w / 2, y + h),
-        QPoint(x + w, y + h / 2),
-        QPoint(x + w / 2, y),
+        QPoint(myX, myY + h / 2),
+        QPoint(myX + w / 2, myY + h),
+        QPoint(myX + w, myY + h / 2),
+        QPoint(myX + w / 2, myY),
     };
     painter->drawPolygon(points, 4);
 }
@@ -57,7 +57,7 @@ void IfBlock::addArrows(QGraphicsScene *scene) {
 
 QRectF IfBlock::boundingRect() const
 {
-    return QRectF(x, y, w, h);
+    return QRectF(myX, myY, w, h);
 }
 
 void IfBlock::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
@@ -83,14 +83,14 @@ QPoint IfBlock::getArrowOut()
 {
     if (is_first_arrow){
         is_first_arrow = false;
-        return QPoint(x, y + h / 2);
+        return QPoint(myX, myY + h / 2);
     }
     else {
-        return QPoint(x + w, y + h / 2);
+        return QPoint(myX + w, myY + h / 2);
     }
 }
 
 QPoint IfBlock::getArrowIn()
 {
-    return QPoint(x + w / 2, y);
+    return QPoint(myX + w / 2, myY);
 }
