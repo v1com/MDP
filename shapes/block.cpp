@@ -9,7 +9,6 @@
 
 Block::Block(Scene *tmpScene, int x, int y, int w, int h)
 {
-    setAcceptDrops(true);
     myScene = tmpScene;
     this->myX = x;
     this->myY = y;

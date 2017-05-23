@@ -5,6 +5,7 @@
 
 Shape::Shape()
 {
+    setAcceptDrops(true);
     isDefault = false;
 }
 
