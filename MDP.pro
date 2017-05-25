@@ -34,7 +34,9 @@ SOURCES += main.cpp\
     shapes/exit.cpp \
     shapes/bar.cpp \
     shapes/arrow.cpp \
-    diagram.cpp
+    diagram.cpp \
+    dialog.cpp \
+    selectparametersdialog.cpp
 HEADERS  += mainwindow.h \
     scene.h \
     view.h \
@@ -47,5 +49,9 @@ HEADERS  += mainwindow.h \
     shapes/arrow.h \
     diagram.h \
     allocator/allocator.h \
-    diagram_exception.h
-FORMS += mainwindow.ui
+    diagram_exception.h \
+    dialog.h \
+    selectparametersdialog.h
+FORMS += mainwindow.ui \
+    dialog.ui \
+    selectparametersdialog.ui
