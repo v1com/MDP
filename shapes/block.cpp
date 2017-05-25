@@ -14,8 +14,9 @@ Block::Block(Scene *tmpScene, int x, int y, int w, int h)
     this->myY = y;
     this->w = width = w;
     this->h = height = h;
+    this->type = 0;
 
-    type = 0;
+    this->arrowPos = new ArrowPosition(getArrowIn(), getArrowOut(), getType());
 
     //Offset in order to the figures are not cut off
     pixmap_w = w + 2;
@@ -23,8 +24,6 @@ Block::Block(Scene *tmpScene, int x, int y, int w, int h)
 
     translate_x = - x + 1;
     translate_y = - y + 1;
-
-    arrow = new Arrow(QPoint(x + w / 2, y + h), QPoint(x + w / 2, y + h + 30));
 
     setToolTip("Simple block");
     setCursor(Qt::OpenHandCursor);

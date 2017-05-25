@@ -25,9 +25,6 @@ IfBlock::IfBlock(Scene *tmpScene, int x, int y)
     translate_x = - x + 1;
     translate_y = - y + 1;
 
-    left_arrow = new Arrow(QPoint(x, y + h / 2), QPoint(x - 100, y + h + 30));
-    right_arrow = new Arrow(QPoint(x + w, y + h / 2), QPoint(x + w + 100, y + h + 30));
-
     setToolTip("If block");
     setCursor(Qt::OpenHandCursor);
     setAcceptedMouseButtons(Qt::LeftButton);

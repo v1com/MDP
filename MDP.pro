@@ -37,6 +37,7 @@ SOURCES += main.cpp\
     diagram.cpp \
     dialog.cpp \
     selectparametersdialog.cpp
+    arrowposition.cpp
 HEADERS  += mainwindow.h \
     scene.h \
     view.h \
@@ -55,3 +56,5 @@ HEADERS  += mainwindow.h \
 FORMS += mainwindow.ui \
     dialog.ui \
     selectparametersdialog.ui
+    arrowposition.h
+FORMS += mainwindow.ui
