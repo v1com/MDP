@@ -15,8 +15,8 @@ public:
     QPoint getArrowOut();
     QPoint getArrowIn();
 
-public slots:
-    void setWidth(QAction *action);
+//public slots:
+    //void setWidth(QAction *action);
 
 protected:
      void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event);

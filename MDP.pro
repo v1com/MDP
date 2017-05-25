@@ -34,7 +34,8 @@ SOURCES += main.cpp\
     shapes/exit.cpp \
     shapes/bar.cpp \
     shapes/arrow.cpp \
-    diagram.cpp
+    diagram.cpp \
+    arrowposition.cpp
 HEADERS  += mainwindow.h \
     scene.h \
     view.h \
@@ -47,5 +48,6 @@ HEADERS  += mainwindow.h \
     shapes/arrow.h \
     diagram.h \
     allocator/allocator.h \
-    diagram_exception.h
+    diagram_exception.h \
+    arrowposition.h
 FORMS += mainwindow.ui

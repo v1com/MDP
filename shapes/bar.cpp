@@ -27,9 +27,6 @@ Bar::Bar(Scene *tmpScene, int x, int y)
     translate_x = - x + 1;
     translate_y = - y + 1;
 
-    arrows.push_back(new Arrow(QPoint(x + 20, y + h), QPoint(x + 20, y + h + 30)));
-    arrows.push_back(new Arrow(QPoint(x + 130, y + h), QPoint(x + 130, y + h + 30)));
-
     setToolTip("Bar");
     setCursor(Qt::OpenHandCursor);
     setAcceptedMouseButtons(Qt::LeftButton);
@@ -56,31 +53,31 @@ QRectF Bar::boundingRect() const
     return QRectF(myX, myY, w, h);
 }
 
-void Bar::setWidth(QAction *action)
-{
-    auto myScene = scene();
-    if (action->text() == "Add arrow") {
-        w += 110;
-        Arrow *last = arrows.back();
-        arrows.push_back(new Arrow(QPoint(last->getFrom().x() + 110, myY + h),
-                                   QPoint(last->getFrom().x() + 110, myY + h + 30)));
+//void Bar::setWidth(QAction *action)
+//{
+//    auto myScene = scene();
+//    if (action->text() == "Add arrow") {
+//        w += 110;
+//        Arrow *last = arrows.back();
+//        arrows.push_back(new Arrow(QPoint(last->getFrom().x() + 110, myY + h),
+//                                   QPoint(last->getFrom().x() + 110, myY + h + 30)));
 
-        myScene->addItem(arrows.back());
-    }
-    else if (action->text() == "Delete arrow") {
-        if (arrows.size() > 2) {
-            w -= 110;
+//        myScene->addItem(arrows.back());
+//    }
+//    else if (action->text() == "Delete arrow") {
+//        if (arrows.size() > 2) {
+//            w -= 110;
 
-            myScene->removeItem(arrows.back());
-            arrows.pop_back();
-        }
-    }
+//            myScene->removeItem(arrows.back());
+//            arrows.pop_back();
+//        }
+//    }
 
-    pixmap_w = w + 2;
-    pixmap_h = h + 2;
+//    pixmap_w = w + 2;
+//    pixmap_h = h + 2;
 
-    myScene->update();
-}
+//    myScene->update();
+//}
 
 void Bar::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 {

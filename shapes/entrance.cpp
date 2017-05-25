@@ -25,8 +25,6 @@ Entrance::Entrance(Scene *tmpScene, int x, int y)
     translate_x = -x + 1;
     translate_y = -y + 1;
 
-    arrow = new Arrow(QPoint(x + w / 2, y + h), QPoint(x + w / 2, y + h + 30));
-
     setToolTip("Entrance");
     setCursor(Qt::OpenHandCursor);
     setAcceptedMouseButtons(Qt::LeftButton);

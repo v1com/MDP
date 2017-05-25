@@ -1,7 +1,9 @@
 #ifndef SHAPE_H
 #define SHAPE_H
+
 #include <QGraphicsItem>
 #include <QGraphicsView>
+#include <arrowposition.h>
 #include <scene.h>
 
 class Shape : public QObject, public QGraphicsItem
@@ -19,6 +21,10 @@ public:
     virtual QPoint getArrowOut() = 0;
     virtual QPoint getArrowIn() = 0;
     bool isDefault;
+    ArrowPosition *arrowPos;
+    ArrowPosition *getArrowPos();
+    QList<Arrow*> arrowFromList;
+    QList<Arrow*> arrowToList;
 
     int getType();
 

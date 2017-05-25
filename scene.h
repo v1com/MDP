@@ -5,13 +5,15 @@
 #include <QGraphicsEllipseItem>
 #include<QPointF>
 
+#include <shapes/arrow.h>
+
 class Scene: public QGraphicsScene
 {
 public:
     Scene(int i, Scene *ttt);
 
     int i;
-    Scene *leftScene;
+    //QList<Arrow*> arrowList;
 
 protected:
 //    void dragEnterEvent (QGraphicsSceneDragDropEvent * event);
